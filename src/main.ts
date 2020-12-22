@@ -40,11 +40,11 @@ const thin: IModel = {
     units: unitType.Millimeter
 };
 
-const bigWithTolerance = $(thick).outline(allowance, 2, true).$result
-const smallWithTolerance = $(thin).outline(allowance, 2, true).$result
+const thickWithAllowance = $(thick).outline(allowance, 0, true).$result
+const thinWithAllowance = $(thin).outline(allowance, 0, true).$result
 
-const svgThick = exporter.toSVG(bigWithTolerance, { units: unitType.Millimeter });
+const svgThick = exporter.toSVG(thickWithAllowance, { units: unitType.Millimeter });
 writeFileSync("./prose/thick.svg", svgThick);
 
-const svgThin = exporter.toSVG(smallWithTolerance, { units: unitType.Millimeter });
+const svgThin = exporter.toSVG(thinWithAllowance, { units: unitType.Millimeter });
 writeFileSync("./prose/thin.svg", svgThin);
